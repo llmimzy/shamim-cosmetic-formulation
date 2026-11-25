@@ -74,7 +74,7 @@ SOLUBILITY = {
 }
 
 VALUE_STATUS = {"not_researched", "imported_unverified", "source_verified", "grade_dependent",
-                "conflicting_sources", "not_applicable", "owner_decision"}
+                "conflicting_sources", "not_applicable", "owner_decision", "not_found"}
 EVIDENCE_TIERS = {"direct_fitzpatrick_iv_vi", "mixed_population", "lighter_phototypes_only",
                   "laboratory_or_mechanistic", "preliminary_or_unsubstantiated", "not_yet_assessed"}
 SOURCE_TYPES = {"rct", "controlled_clinical", "systematic_review_or_meta_analysis", "human_instrumental",
