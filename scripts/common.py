@@ -74,7 +74,11 @@ SOLUBILITY = {
 }
 
 VALUE_STATUS = {"not_researched", "imported_unverified", "source_verified", "grade_dependent",
-                "conflicting_sources", "not_applicable", "owner_decision", "not_found"}
+                "conflicting_sources", "not_applicable", "owner_decision", "not_found",
+                # owner-confirmed CAS audit vocabulary (data/curated/research/cas_verified_2026-11-25.csv)
+                "verified_exact", "verified_representative", "verified_botanical", "generic_identifier",
+                "unresolved", "conflicting_identity"}
+VERIFIED_CAS = {"source_verified", "verified_exact", "verified_representative", "verified_botanical"}
 EVIDENCE_TIERS = {"direct_fitzpatrick_iv_vi", "mixed_population", "lighter_phototypes_only",
                   "laboratory_or_mechanistic", "preliminary_or_unsubstantiated", "not_yet_assessed"}
 SOURCE_TYPES = {"rct", "controlled_clinical", "systematic_review_or_meta_analysis", "human_instrumental",

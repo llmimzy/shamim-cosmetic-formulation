@@ -17,7 +17,7 @@ from datetime import date
 from build import curated_ingredients
 from common import (CAS_RE, CATEGORY_KEYS, CURATED, DOI_RE, EVIDENCE_TIERS, JURISDICTIONS, PHASE_VALUES,
                     PHOTOTYPES, PMID_RE, PURPOSES, ROOT, SOURCE_TYPES, STUDY_VERIFICATION, TEST_MATERIAL,
-                    VALUE_STATUS, cas_checksum_ok, read_csv)
+                    VALUE_STATUS, VERIFIED_CAS, cas_checksum_ok, read_csv)
 
 URL_RE = re.compile(r"^https?://[^\s/$.?#].[^\s]*$")
 PCT_RE = re.compile(r"(\d+(?:\.\d+)?)\s*%")
@@ -59,12 +59,18 @@ def validate() -> tuple[list[str], list[str], dict]:
             if not CAS_RE.match(cas) or not cas_checksum_ok(cas):
                 errors.append(f"{r['id']} {r['inci_name']}: CAS {cas} fails format/checksum")
             by_cas[cas].append(f"{r['id']} {r['inci_name']}")
-        if r["cas_status"] == "source_verified" and len([s for s in r["cas_sources"].split("|") if s]) < 2:
-            errors.append(f"{r['id']}: CAS marked source_verified with fewer than two sources")
+        if r["cas_status"] in VERIFIED_CAS and len([s for s in r["cas_sources"].split("|") if s]) < 2:
+            errors.append(f"{r['id']}: CAS marked {r['cas_status']} with fewer than two sources")
+        if r["cas_status"] in VERIFIED_CAS and not r["cas_number"]:
+            errors.append(f"{r['id']}: CAS marked {r['cas_status']} but cas_number is blank")
+        for alt in filter(None, (r["cas_alternatives"] + "|" + r["cas_related"]).split("|")):
+            if not cas_checksum_ok(alt):
+                errors.append(f"{r['id']}: alternative/related CAS {alt} fails checksum")
         for url in filter(None, r["cas_sources"].split("|")):
             if not URL_RE.match(url):
                 errors.append(f"{r['id']}: malformed source URL {url}")
-        if r["cas_status"] in {"imported_unverified", "conflicting_sources", "not_found"}:
+        if r["cas_status"] in {"imported_unverified", "conflicting_sources", "not_found", "unresolved",
+                               "conflicting_identity", "generic_identifier"}:
             warnings.append(f"CAS {r['cas_status']}: {r['id']} {r['inci_name']}")
         if not r["active_matter_percent"]:
             pass  # counted below; reported once, not 140 times

@@ -8,10 +8,10 @@ A valid CAS checksum or DOI pattern proves format only, not identity.
 ## Summary
 
 - Ingredients: 140
-- CAS status: conflicting_sources 5, grade_dependent 6, imported_unverified 91, not_found 7, source_verified 31
+- CAS status: conflicting_identity 1, generic_identifier 2, grade_dependent 6, imported_unverified 90, unresolved 3, verified_botanical 16, verified_exact 11, verified_representative 11
 - Sources by verification status: removed 2, unverified 26
 - Evidence links: 19 · Regulatory entries: 2
-- Errors: **0** · Warnings: **133**
+- Errors: **0** · Warnings: **126**
 
 ## Errors
 
@@ -28,14 +28,8 @@ None.
 - CAS imported_unverified: ING-007 Lactic Acid
 - CAS imported_unverified: ING-008 Alpha-Arbutin
 - CAS imported_unverified: ING-009 Retinol
-- CAS conflicting_sources: ING-013 Ceramide EOP
-- CAS not_found: ING-015 Ceramide AS
-- CAS imported_unverified: ING-016 Ceramide EOS
-- CAS not_found: ING-018 Ceramide AG
-- CAS not_found: ING-019 Ceramide EOH
-- CAS not_found: ING-020 Ceramide NDS
-- CAS conflicting_sources: ING-029 Hexapeptide-9
-- CAS conflicting_sources: ING-041 Glyceryl Stearate Citrate
+- CAS unresolved: ING-015 Ceramide AS
+- CAS unresolved: ING-019 Ceramide EOH
 - CAS imported_unverified: ING-044 Glyceryl Stearate
 - CAS imported_unverified: ING-045 PEG-100 Stearate
 - CAS imported_unverified: ING-046 Polysorbate 80
@@ -58,7 +52,6 @@ None.
 - CAS imported_unverified: ING-065 Sclerotium Gum
 - CAS imported_unverified: ING-066 Sodium Polyacrylate
 - CAS imported_unverified: ING-068 Cellulose Gum
-- CAS conflicting_sources: ING-069 Ammonium Acryloyldimethyltaurate/VP Copolymer
 - CAS imported_unverified: ING-071 Cocamidopropyl Betaine
 - CAS imported_unverified: ING-072 Decyl Glucoside
 - CAS imported_unverified: ING-073 Coco-Glucoside
@@ -110,14 +103,14 @@ None.
 - CAS imported_unverified: ING-121 Butyrospermum Parkii (Shea) Butter
 - CAS imported_unverified: ING-122 Theobroma Cacao (Cocoa) Seed Butter
 - CAS imported_unverified: ING-123 Mangifera Indica (Mango) Seed Butter
-- CAS conflicting_sources: ING-124 Garcinia Indica Seed Butter
-- CAS not_found: ING-127 Shorea Stenoptera Seed Butter
-- CAS not_found: ING-129 Allanblackia Floribunda Seed Butter
+- CAS generic_identifier: ING-124 Garcinia Indica Seed Butter
+- CAS unresolved: ING-129 Allanblackia Floribunda Seed Butter
+- CAS conflicting_identity: ING-130 Pentadesma Butyracea Seed Butter
 - CAS imported_unverified: ING-131 Helianthus Annuus (Sunflower) Seed Oil
 - CAS imported_unverified: ING-132 Simmondsia Chinensis (Jojoba) Seed Oil
 - CAS imported_unverified: ING-133 Rosa Canina Fruit Oil
 - CAS imported_unverified: ING-134 Argania Spinosa Kernel Oil
-- CAS not_found: ING-135 Sclerocarya Birrea Seed Oil
+- CAS generic_identifier: ING-135 Sclerocarya Birrea Seed Oil
 - CAS imported_unverified: ING-136 Moringa Oleifera Seed Oil
 - CAS imported_unverified: ING-137 Camellia Oleifera Seed Oil
 - CAS imported_unverified: ING-138 Carthamus Tinctorius (Safflower) Seed Oil
