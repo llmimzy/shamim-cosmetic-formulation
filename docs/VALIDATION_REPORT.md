@@ -7,11 +7,11 @@ A valid CAS checksum or DOI pattern proves format only, not identity.
 
 ## Summary
 
-- Ingredients: 140
-- CAS status: conflicting_identity 1, generic_identifier 2, grade_dependent 6, imported_unverified 90, unresolved 3, verified_botanical 16, verified_exact 11, verified_representative 11
+- Ingredients: 139
+- CAS status: conflicting_identity 1, generic_identifier 2, grade_dependent 6, imported_unverified 90, unresolved 2, verified_botanical 16, verified_exact 11, verified_representative 11
 - Sources by verification status: identity_verified 27, removed 2, unverified 1
 - Evidence links: 19 · Regulatory entries: 19
-- Errors: **0** · Warnings: **100**
+- Errors: **0** · Warnings: **99**
 
 ## Errors
 
@@ -104,7 +104,6 @@ None.
 - CAS imported_unverified: ING-122 Theobroma Cacao (Cocoa) Seed Butter
 - CAS imported_unverified: ING-123 Mangifera Indica (Mango) Seed Butter
 - CAS generic_identifier: ING-124 Garcinia Indica Seed Butter
-- CAS unresolved: ING-129 Allanblackia Floribunda Seed Butter
 - CAS conflicting_identity: ING-130 Pentadesma Butyracea Seed Butter
 - CAS imported_unverified: ING-131 Helianthus Annuus (Sunflower) Seed Oil
 - CAS imported_unverified: ING-132 Simmondsia Chinensis (Jojoba) Seed Oil
@@ -118,4 +117,4 @@ None.
 - Shared CAS 93165-54-9 (species- or class-level identifier?): ING-039 Moringa Oleifera Leaf Extract; ING-136 Moringa Oleifera Seed Oil
 - Source unverified: SRC-0018 European Commission CosIng ingredient database
 - REG-0012: EU limit rests on a single source; confirm against the OJ text
-- Active-matter % missing for 140/140 ingredients (needs supplier CoA/TDS)
+- Active-matter % missing for 139/139 ingredients (needs supplier CoA/TDS)

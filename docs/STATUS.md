@@ -28,14 +28,13 @@ _Last updated 2026-11-25. Branch `phase-1-audit`, not pushed._
   - Annex III: salicylic acid (2019/1966), alpha-arbutin and retinol (2024/996).
   - Ethylhexylglycerin and caprylyl glycol are not Annex V preservatives and have no row.
 - **Product-type ranges** for retinol, alpha-arbutin and salicylic acid replace the old general rows (kept as `superseded`). The maximum is the EU limit; the minimum is blank because no sourced minimum exists. The validator now errors if a range exceeds the limit for the same product type.
-- **Allanblackia.** No INCI name for *A. floribunda* butter was found; see `data/curated/research/allanblackia_species_2026-11-25.md`.
+- **Allanblackia removed** (owner decision). ING-129 is dropped from the curated data by a logged `__record__` removal (CHG entry); the raw row is untouched. Research note kept in `data/curated/research/allanblackia_species_2026-11-25.md`.
 - **Checks.** 0 validation errors, 100 warnings (open uncertainty); 14 database tests and 3 atlas tests pass.
 
 ## Waiting on the owner
-- **Allanblackia:** rename ING-129 to *Allanblackia Stuhlmannii Seed Butter* (recommended)?
-- **D6:** push to GitHub.
+- Nothing outstanding. Published to github.com/llmimzy/shamim-cosmetic-formulation (main).
 
 ## Next, in order
-1. Double-check the **90 CAS numbers already in the raw file** (still `imported_unverified`).
+1. The 90 CAS numbers from the raw file stay `imported_unverified`; the owner chose not to re-check them (2026-11-25).
 2. Full-text extraction for the key studies (effect sizes, phototype subgroups), moving them from `identity_verified` to `content_extracted`.
 3. Phase 4–6: compatibility rules, melanated-skin framework, African botanicals, explorer, README.

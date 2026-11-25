@@ -35,12 +35,22 @@ class ChangeLogError(Exception):
 
 
 def apply_change_log(records: list[dict], changes: list[dict]) -> list[dict]:
-    """Apply logged edits in order. Each edit must state the value it replaces."""
+    """Apply logged edits in order. Each edit must state the value it replaces.
+
+    A row with field '__record__', old_value 'present' and new_value 'removed' drops the whole
+    record from the curated table. The raw row is kept unchanged in data/raw.
+    """
     by_id = {r["id"]: r for r in records}
+    removed = set()
     for c in changes:
         rec = by_id.get(c["record_id"])
-        if rec is None:
-            raise ChangeLogError(f"{c['id']}: unknown record {c['record_id']}")
+        if rec is None or c["record_id"] in removed:
+            raise ChangeLogError(f"{c['id']}: unknown or removed record {c['record_id']}")
+        if c["field"] == "__record__":
+            if (c["old_value"], c["new_value"]) != ("present", "removed") or not c["reason"].strip():
+                raise ChangeLogError(f"{c['id']}: record removal must be present -> removed with a reason")
+            removed.add(c["record_id"])
+            continue
         if c["field"] not in INGREDIENT_FIELDS or c["field"] == "id":
             raise ChangeLogError(f"{c['id']}: field '{c['field']}' cannot be changed")
         if rec[c["field"]] != c["old_value"]:
@@ -49,7 +59,7 @@ def apply_change_log(records: list[dict], changes: list[dict]) -> list[dict]:
         if not c["reason"].strip():
             raise ChangeLogError(f"{c['id']}: reason is required")
         rec[c["field"]] = c["new_value"]
-    return records
+    return [r for r in records if r["id"] not in removed]
 
 
 def curated_ingredients() -> list[dict]:

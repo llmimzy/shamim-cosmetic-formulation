@@ -79,7 +79,8 @@ def test_removed_sources_not_used_as_evidence():
 def test_build_json_round_trip():
     build.build()
     db = json.loads((ROOT / "data/build/database.json").read_text(encoding="utf-8"))
-    assert len(db["ingredients"]) == 140
+    removed = sum(c["field"] == "__record__" for c in read_csv(ROOT / "data/curated/change_log.csv"))
+    assert len(db["ingredients"]) == 140 - removed
     with (ROOT / "data/build/ingredients_cleaned.csv").open(newline="", encoding="utf-8") as fh:
         flat = list(csv.DictReader(fh))
     assert [r["id"] for r in flat] == [r["id"] for r in db["ingredients"]]
