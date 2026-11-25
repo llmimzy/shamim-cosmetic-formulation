@@ -1,0 +1,21 @@
+ingredient,study_ids,role_in_evidence,research_focus
+Deoxyarbutin,MS001,Tyrosinase inhibitor,Potential depigmenting response differences
+Sodium lauryl sulfate,MS002|MS006|MS008,Surfactant / irritant challenge,Barrier and irritation response
+Adapalene,MS003|MS007,Retinoid,Clinical tolerability
+Tretinoin / retinoic acid,MS004|MS007,Retinoid,Biochemical response and tolerability
+Glycolic acid,MS005,AHA,UV-associated pigment response
+Lactic acid,MS006,AHA,Stinging/neurosensory irritation
+Retinol,MS006,Retinoid,Provocation response
+Capsaicin,MS006,Stinging stimulus,Neurosensory challenge
+Tazarotene,MS007,Retinoid,Recorded tolerability
+Iron oxides,MS009|MS010,Pigment / visible-light attenuator,Pigment photoprotection
+Zinc oxide,MS009,UV filter,Comparator sunscreen
+Titanium dioxide,MS009,UV filter / pigment,Comparator ingredients
+Ascorbic acid,MS011,Antioxidant,"Visible-light pigmentation prevention, not general efficacy"
+2-mercaptonicotinoyl glycine,MS011,Melanogenesis inhibitor,Visible-light pigmentation prevention
+Arbutin,MS012,Tyrosinase inhibitor,Depigmenting effect in given vehicle
+Azelaic acid,MS012,Multifunctional depigmenting agent,Within-vehicle comparison
+Hydroquinone,MS012,Depigmenting drug,Within-vehicle comparison; regulated
+Resveratrol,MS012,Polyphenol,Within-vehicle comparison
+Ascorbyl palmitate,MS012,Vitamin C derivative,Within-vehicle comparison
+Isobutylamido thiazolyl resorcinol,MS013,Tyrosinase inhibitor,PIH endpoint improvement

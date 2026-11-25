@@ -1,0 +1,19 @@
+name: Validate data
+on:
+  push:
+  pull_request:
+jobs:
+  evidence-atlas:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: research/melanated-skin/evidence-atlas
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Catalogue integrity checks
+        run: python scripts/validate_data.py
+      - name: Site data freshness and tests
+        run: python -m unittest discover -s tests -v

@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Cite the original studies for scientific claims; use this entry to cite the evidence atlas itself."
+title: "Melanated Skin × Ingredient Response: A Curated Evidence Atlas"
+authors:
+  - family-names: Quresh
+    given-names: Shamim
+version: 1.0.0
+date-released: 2026-11-25
+type: dataset
+license: CC-BY-4.0

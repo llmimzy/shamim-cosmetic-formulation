@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Melanated Skin × Ingredient Response | Evidence Atlas</title>
+<meta name="description" content="Explore 13 peer-reviewed skincare studies, critically distinguished by comparison design, endpoint, population, and limitations.">
+<style>
+:root{--cream:#f7f5ee;--ivory:#fffefb;--stone:#e7e3d8;--ink:#26272b;--muted:#666b70;--lapis:#23408e;--terra:#a26047}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--ink);line-height:1.58}
+.container{max-width:1180px;margin:auto;padding:0 26px}header{border-bottom:1px solid var(--stone);background:var(--ivory)}nav{padding:20px 0;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.logo{font-size:.76rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700}nav a, a{color:var(--lapis)}nav a{text-decoration:none;font-size:.85rem}nav a:hover{text-decoration:underline}
+.hero{padding:64px 0 38px}.eyebrow{font-size:.73rem;letter-spacing:.16em;text-transform:uppercase;color:var(--terra);font-weight:750}
+h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(2.4rem,5vw,4.8rem);font-weight:400;letter-spacing:-.045em;line-height:1.08;max-width:880px;margin:18px 0}
+.lede{font-size:1.08rem;color:#4c4e51;max-width:760px} .stats{display:flex;gap:24px;flex-wrap:wrap;padding:22px 0;border-block:1px solid var(--stone);margin-top:44px}
+.stat{min-width:135px}.stat strong{font-family:Georgia,serif;font-size:1.75rem;font-weight:400;display:block}.stat span{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
+main{padding:34px 0 80px} .toolbar{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;margin:22px 0}input,select{background:var(--ivory);border:1px solid #cdcbbf;border-radius:2px;padding:12px 14px;font:inherit;color:var(--ink);min-width:0}
+input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #7e98d4;outline-offset:2px}.small{font-size:.83rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{border:1px solid var(--stone);background:var(--ivory);padding:23px 23px 22px;display:flex;flex-direction:column;gap:10px}
+.card .top{display:flex;align-items:center;justify-content:space-between;gap:10px}.serial{font-size:.72rem;letter-spacing:.14em;color:var(--lapis);font-weight:750}.year{color:var(--muted);font-size:.75rem}.card h3{margin:0;font-family:Georgia,serif;font-size:1.35rem;line-height:1.27;font-weight:500}.pill{border:1px solid #d5d9e6;display:inline-block;width:fit-content;color:var(--lapis);font-size:.72rem;padding:4px 8px}
+.card p{margin:0;font-size:.92rem}.card footer{margin-top:auto;padding-top:10px;display:flex;flex-wrap:wrap;gap:12px;font-size:.85rem}.warn{font-size:.79rem;background:#f1ede2;padding:13px 15px;color:#5a4b43;border-left:3px solid var(--terra)}
+footer.site{border-top:1px solid var(--stone);padding:28px 0 50px;color:var(--muted);font-size:.8rem}#empty{display:none;padding:25px 0}
+@media(max-width:700px){.toolbar{grid-template-columns:1fr}.grid{grid-template-columns:1fr}nav{align-items:flex-start}.hero{padding:42px 0 20px}.stats{gap:14px}.stat{min-width:110px}}
+</style>
+</head>
+<body>
+<header><div class="container"><nav><div class="logo">Evidence Atlas / Shamim Quresh</div><span class="small">13 peer-reviewed publications</span></nav></div></header>
+<div class="container hero"><div class="eyebrow">Cosmetic formulation · Literature analysis</div><h1>Melanated Skin <em>×</em> Ingredient Response</h1><p class="lede">Evidence is most useful when its limits are visible. Explore peer-reviewed studies on pigmentation, photoprotection, irritation, exfoliants and retinoid tolerability, distinguishing differences <em>between</em> population groups from results <em>within</em> darker phototypes.</p>
+<div class="stats"><div class="stat"><strong id="stat-total">13</strong><span>Research studies</span></div><div class="stat"><strong id="stat-pop">8</strong><span>Group comparisons</span></div><div class="stat"><strong id="stat-in">5</strong><span>Within-phototype studies</span></div><div class="stat"><strong>1988–2025</strong><span>Publication years</span></div></div></div>
+<main class="container"><h2 style="font-family:Georgia,serif;font-size:1.6rem;font-weight:400">Browse the research</h2><div class="warn">Comparing racial or ethnic groups does not isolate melanin as the cause of a response. Studies in darker phototypes do not establish different responses versus lighter skin unless a direct comparison was made.</div>
+<div class="toolbar"><input type="search" id="q" aria-label="Search studies" placeholder="Search ingredients, endpoints, authors or findings…"><select id="topic" aria-label="Filter by topic"><option value="">All research topics</option></select><select id="comparison" aria-label="Filter by comparison"><option value="">All comparison types</option><option value="Across population groups">Across population groups</option><option value="within">Within darker / III–IV phototypes</option></select></div>
+<p id="count" class="small" aria-live="polite">Loading study index…</p><section id="cards" class="grid" aria-label="Study cards"></section><p id="empty">No studies match those filters. Try broader terms.</p>
+</main><footer class="site"><div class="container">Curated by Shamim Quresh · 25 November 2026 · Research resource, not clinical, safety or regulatory advice. Cite original studies for scientific findings.</div></footer>
+<script>
+const cards=document.getElementById('cards'),q=document.getElementById('q'),topic=document.getElementById('topic'),comparison=document.getElementById('comparison'),count=document.getElementById('count');
+let data=[];
+const safe=(s)=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function show(){const needle=q.value.trim().toLowerCase(),cat=topic.value,comp=comparison.value;
+const subset=data.filter(s=>[s.title,s.ingredients,s.finding,s.author,s.topic,s.population,s.category].join(' ').toLowerCase().includes(needle) && (!cat||s.topic===cat) && (!comp||(comp==='within'?s.comparison!=='Across population groups':s.comparison===comp)));
+count.textContent=`${subset.length} of ${data.length} studies`;
+cards.innerHTML=subset.map(s=>`<article class="card"><div class="top"><span class="serial">${safe(s.id)}</span><span class="year">${safe(s.year)}</span></div><h3>${safe(s.title)}</h3><div class="pill">${safe(s.comparison)}</div><p class="small"><strong>Ingredients:</strong> ${safe(s.ingredients)}</p><p><strong>Finding.</strong> ${safe(s.finding)}</p><p class="small"><strong>Interpretive limit.</strong> ${safe(s.limitations)}</p><footer><a href="${safe(s.source_url)}" target="_blank" rel="noopener noreferrer">PubMed · PMID ${safe(s.pmid)}</a>${s.fulltext?`<a href="${safe(s.fulltext)}" target="_blank" rel="noopener noreferrer">Full text</a>`:''}</footer></article>`).join('');
+document.getElementById('empty').style.display=subset.length?'none':'block';}
+fetch('./data/studies.json').then(r=>{if(!r.ok)throw Error('Cannot load study index');return r.json()}).then(rows=>{data=rows;const topics=[...new Set(data.map(r=>r.topic))].sort();topics.forEach(t=>{const o=document.createElement('option');o.value=t;o.textContent=t;topic.appendChild(o)});document.getElementById('stat-total').textContent=data.length;document.getElementById('stat-pop').textContent=data.filter(r=>r.comparison==='Across population groups').length;document.getElementById('stat-in').textContent=data.filter(r=>r.comparison!=='Across population groups').length;show();}).catch(err=>{count.textContent='Study index unavailable. Host through a web server or GitHub Pages; opening the HTML directly from a local file will not load JSON in some browsers.';console.error(err)});
+[q,topic,comparison].forEach(el=>el.addEventListener('input',show));
+</script>
+</body></html>

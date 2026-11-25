@@ -120,7 +120,7 @@ shamim-cosmetic-formulation/
 │   │   └── change_log.csv        # every edit vs raw, with reason
 │   ├── schemas/database.schema.json
 │   └── build/                # generated: database.json, flat cleaned CSV
-├── research/  melanated-skin/  african-botanicals/  active-ingredients/
+├── research/  melanated-skin/ (evidence-atlas/ already added)  african-botanicals/  active-ingredients/
 │              ceramides-and-peptides/  evidence-reviews/
 ├── formulation/  ingredient-selection/  compatibility/  stability/  formulation-frameworks/
 ├── regulatory/  kenya/  eu/  uk/  us/  china/
@@ -166,7 +166,45 @@ shamim-cosmetic-formulation/
 4. **Phase 5 — Explorer and documentation.** Static explorer (search, filters, evidence and phototype filters, compatibility view, citations, CSV export), README, CONTRIBUTING, CITATION, maintenance guide.
 5. **Phase 6 — Testing and delivery.** Validation report, link checks, export round-trip tests, accessibility check of the explorer, final summary and prioritised verification backlog.
 
-## 9. Initial verification backlog (top items)
+## 9. Addendum: Melanated Skin × Ingredient Response evidence atlas (added 2026-11-25)
+
+**What it is.** A self-contained research module with:
+- 13 studies (1988–2025), each with a PMID-linked evidence card;
+- a 20-entry ingredient index, a methodology, an evidence matrix, formulation hypotheses and a research-gaps note;
+- a stdlib-only validator, 3 tests and a static browser page.
+
+**Where it is.** `research/melanated-skin/evidence-atlas/`, copied unchanged except for two files:
+- its GitHub Actions workflow now lives at the repo root (`.github/workflows/validate.yml`) and runs in the atlas folder, because GitHub only runs workflows from the root;
+- its `.gitignore` moved to the root.
+
+Its validator and tests pass: 13 studies, 20 index entries, 3/3 tests OK.
+
+**Why it matters for the main database.** The atlas is built on the right question for section 7 of the brief: it separates a *different response across phototypes* from *efficacy shown in a darker-skin cohort*. In Phase 2 I'll import its 13 studies into `studies.csv` (keeping the `MS###` IDs as aliases) and link them to the ingredients they actually tested:
+
+| Atlas study | Links to database ingredient | Type of link |
+|---|---|---|
+| MS005 | Glycolic Acid | Cross-population photoresponse (small study) |
+| MS006 | Lactic Acid, Retinol | Irritation/stinging provocation; safety, not efficacy |
+| MS009 | Zinc Oxide, Titanium Dioxide | Comparator formula only (iron oxides were the variable) |
+| MS011 | Ascorbic Acid | **Null result:** 7% ascorbic acid did not prevent visible-light pigmentation in phototypes III–IV. The Ascorbic Acid record must reflect this. |
+| MS012 | Azelaic Acid | 20% in a single-active vehicle, phototypes IV–V; not significant versus control |
+| MS013 | Isobutylamido Thiazolyl Resorcinol | PIH vs vehicle in phototypes V–VI. A different paper from the melasma trial already in the dataset. Manufacturer-affiliated authors are flagged. |
+
+What the atlas covers that the database doesn't:
+- Iron oxides, sodium lauryl sulfate and the prescription retinoids/hydroquinone are context only. None is one of the 140.
+- **Iron oxides** are central to visible-light protection, which brief §7 prioritises, but are absent from the database. That's a candidate addition (backlog item 9).
+- **Arbutin (MS012) is not alpha-arbutin.** It will *not* be linked to the Alpha-Arbutin record as efficacy evidence.
+
+**Issues found in the atlas (to fix in Phase 3, not silently):**
+- MS007 gives its author as "Racial differences cohort study authors", a placeholder, not real names. It needs the actual author list.
+- DOI is blank for MS003, MS004, MS005, MS007, MS009 and MS012.
+- Several sample sizes are "Not confirmed". That is honest, but they should be filled from the full text where available.
+- `validate_data.py` hard-codes "exactly 13 studies" and the test hard-codes "8 cross-population". Both will fail as soon as a study is added, so in Phase 2 they become counts checked against the data.
+- There will be two browser pages (the atlas page and the planned main explorer). In Phase 5 the main explorer will read the atlas studies too. The atlas page stays as a focused view.
+
+**Licence.** The atlas is already released as CC BY 4.0 (content) + MIT (code), which matches recommendation D2. Approving D2 makes the whole repository consistent.
+
+## 10. Initial verification backlog (top items)
 1. Check the US status of the 10 sunscreen filters against the current FDA monograph and orders, especially bemotrizinol.
 2. Replace the "ECHA preservative" source with Annex V of Regulation (EC) No 1223/2009 and record the per-preservative limits.
 3. Verify all 27 PMIDs: existence, exact title, DOI, population.
@@ -175,3 +213,5 @@ shamim-cosmetic-formulation/
 6. Make retinol, alpha-arbutin and salicylic acid ranges product-type specific.
 7. Check azelaic acid and tranexamic acid cosmetic vs medicinal status per market.
 8. Find Kenya's requirements (KEBS standards, PPB boundary) for actives and sunscreens. No source in the dataset covers Kenya.
+9. Decide whether to add iron oxides (CI 77491/77492/77499) as a visible-light-relevant ingredient. The atlas evidence (MS009, MS010) supports researching it.
+10. Fill the missing authors/DOIs in the atlas (MS007 author list; DOIs for six studies).
