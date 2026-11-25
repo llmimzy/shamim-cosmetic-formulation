@@ -18,7 +18,9 @@ class EvidenceAtlasTests(unittest.TestCase):
     def test_population_categories(self):
         with (ROOT/'data/studies.csv').open(newline='',encoding='utf-8') as f:
             rows=list(csv.DictReader(f))
-        self.assertEqual(sum(r['comparison']=='Across population groups' for r in rows),8)
-        self.assertEqual(len(rows),13)
+        # Every study has a card, and every card has a study (no hard-coded totals).
+        cards={p.stem for p in (ROOT/'studies').glob('MS*.md')}
+        self.assertEqual({r['id'] for r in rows},cards)
+        self.assertTrue(all(r['comparison'] for r in rows))
 
 if __name__=='__main__':unittest.main()

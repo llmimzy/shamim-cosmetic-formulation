@@ -9,9 +9,9 @@ A valid CAS checksum or DOI pattern proves format only, not identity.
 
 - Ingredients: 140
 - CAS status: conflicting_identity 1, generic_identifier 2, grade_dependent 6, imported_unverified 90, unresolved 3, verified_botanical 16, verified_exact 11, verified_representative 11
-- Sources by verification status: removed 2, unverified 26
+- Sources by verification status: identity_verified 24, removed 2, unverified 2
 - Evidence links: 19 · Regulatory entries: 2
-- Errors: **0** · Warnings: **126**
+- Errors: **0** · Warnings: **102**
 
 ## Errors
 
@@ -117,31 +117,7 @@ None.
 - CAS imported_unverified: ING-139 Cocos Nucifera (Coconut) Oil
 - Shared CAS 93165-54-9 (species- or class-level identifier?): ING-039 Moringa Oleifera Leaf Extract; ING-136 Moringa Oleifera Seed Oil
 - Source unverified: SRC-0001 Regulation (EC) No 1223/2009 on cosmetic products, Annex V (list of preservatives allowed in cosmetic products), consolidated text
-- Source unverified: STU-0002 The effect of niacinamide on reducing cutaneous pigmentation and suppression of melanosome transfer
-- Source unverified: STU-0003 A comparative study of 20% azelaic acid cream monotherapy versus sequential therapy in dark-skinned patients
-- Source unverified: STU-0004 Topical 5% tranexamic acid for treatment of melasma in Asians: double-blind randomized trial
-- Source unverified: STU-0005 Double-blind randomized trial of 5% ascorbic acid vs 4% hydroquinone in melasma
-- Source unverified: STU-0006 The safety and efficacy of salicylic acid chemical peels in darker racial-ethnic groups
-- Source unverified: STU-0007 Glycolic acid peels for postinflammatory hyperpigmentation in Black patients: comparative study
-- Source unverified: STU-0008 Topical treatments for melasma and their mechanism of action: systematic review
-- Source unverified: STU-0009 Topical alpha-arbutin 5% and kojic acid 2% vs triple combination for melasma
-- Source unverified: STU-0010 Improvement of naturally aged skin with vitamin A (retinol)
-- Source unverified: STU-0011 Thiamidol in moderate-to-severe melasma: randomized double-blind trial in phototypes III–V
-- Source unverified: STU-0012 Effect of a Ceramide NP-containing moisturizer on barrier function: randomized trial
-- Source unverified: STU-0013 Ceramide-dominant moisturizer randomized trial
-- Source unverified: STU-0014 Topical palmitoyl pentapeptide improves photoaged human facial skin
-- Source unverified: STU-0015 Oral and topical peptides for skin aging: systematic review and meta-analysis of RCTs
-- Source unverified: STU-0016 Topical treatment for postinflammatory hyperpigmentation: systematic review
-- Source unverified: STU-0017 Effects of standardized Centella asiatica extract on postlaser facial wound healing: RCT
 - Source unverified: SRC-0018 European Commission CosIng ingredient database
-- Source unverified: STU-0019 Enhancement of stratum corneum lipid structure improves barrier function: RCT
-- Source unverified: STU-0021 Placebo-controlled double-blind randomized study of glycerol-based emollient in atopic dermatitis
-- Source unverified: STU-0022 In vitro and in vivo evaluation of an emollient-rich moisturizer
-- Source unverified: STU-0023 Double-blind study comparing glycerin and urea on dry eczematous skin
-- Source unverified: STU-0024 The effects of common OTC moisturizers on skin barrier function: controlled trial
-- Source unverified: STU-0025 Effect of topically applied dexpanthenol on epidermal barrier function: placebo-controlled human study
-- Source unverified: STU-0027 Vegetable butters and oils as dermal ingredients: clinical studies review
-- Source unverified: STU-0028 Effect of olive and sunflower seed oil on the adult skin barrier
 - Range RNG-0008 (general, max 2%) exceeds the lowest recorded EU limit (0.5%) for some product type: face cream; body lotion
 - Range RNG-0009 (general, max 0.3%) exceeds the lowest recorded EU limit (0.05%) for some product type: body lotion; hand/face and other leave-on/rinse-off
 - Active-matter % missing for 140/140 ingredients (needs supplier CoA/TDS)

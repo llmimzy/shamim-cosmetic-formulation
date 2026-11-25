@@ -90,7 +90,7 @@
     "title": "Differential regulation of tyrosinase activity in skin of white and black individuals in vivo by topical retinoic acid",
     "journal": "Journal of Investigative Dermatology",
     "pmid": "8496619",
-    "doi": "",
+    "doi": "10.1111/1523-1747.ep12476615",
     "ingredients": "Retinoic acid (tretinoin)",
     "category": "Retinoids",
     "design": "Short-term mechanistic human experiment",
@@ -108,7 +108,7 @@
     "topic": "Pigmentation",
     "fulltext": "",
     "source_url": "https://pubmed.ncbi.nlm.nih.gov/8496619/",
-    "doi_url": "",
+    "doi_url": "https://doi.org/10.1111/1523-1747.ep12476615",
     "accessed": "2026-11-25"
   },
   {
@@ -118,7 +118,7 @@
     "title": "Effects of glycolic acid on light-induced skin pigmentation in Asian and Caucasian subjects",
     "journal": "Journal of the American Academy of Dermatology",
     "pmid": "10906645",
-    "doi": "",
+    "doi": "10.1067/mjd.2000.104894",
     "ingredients": "Glycolic acid",
     "category": "Alpha hydroxy acids",
     "design": "Experimental pigmentation study",
@@ -136,7 +136,7 @@
     "topic": "Exfoliation and photoresponse",
     "fulltext": "",
     "source_url": "https://pubmed.ncbi.nlm.nih.gov/10906645/",
-    "doi_url": "",
+    "doi_url": "https://doi.org/10.1067/mjd.2000.104894",
     "accessed": "2026-11-25"
   },
   {
@@ -170,11 +170,11 @@
   {
     "id": "MS007",
     "year": "2024",
-    "author": "Racial differences cohort study authors",
+    "author": "Chang et al.",
     "title": "Racial differences in tolerability of topical retinoids: A 15-year single-center retrospective cohort study",
     "journal": "JAAD International",
     "pmid": "38957838",
-    "doi": "",
+    "doi": "10.1016/j.jdin.2024.04.012",
     "ingredients": "Topical retinoids (including tretinoin, adapalene, tazarotene)",
     "category": "Retinoids",
     "design": "Retrospective matched cohort",
@@ -192,7 +192,7 @@
     "topic": "Retinoid tolerability",
     "fulltext": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11217678/",
     "source_url": "https://pubmed.ncbi.nlm.nih.gov/38957838/",
-    "doi_url": "",
+    "doi_url": "https://doi.org/10.1016/j.jdin.2024.04.012",
     "accessed": "2026-11-25"
   },
   {
@@ -230,7 +230,7 @@
     "title": "Impact of Iron-Oxide Containing Formulations Against Visible Light-Induced Skin Pigmentation in Skin of Color Individuals",
     "journal": "Journal of Drugs in Dermatology",
     "pmid": "32726103",
-    "doi": "",
+    "doi": "10.36849/JDD.2020.5032",
     "ingredients": "Iron oxides; zinc oxide; titanium dioxide",
     "category": "Photoprotection",
     "design": "Controlled within-phototype formulation comparison",
@@ -248,7 +248,7 @@
     "topic": "Visible light and sunscreen",
     "fulltext": "",
     "source_url": "https://pubmed.ncbi.nlm.nih.gov/32726103/",
-    "doi_url": "",
+    "doi_url": "https://doi.org/10.36849/JDD.2020.5032",
     "accessed": "2026-11-25"
   },
   {
