@@ -1,0 +1,20 @@
+id,ingredient_id,study_id,purpose,test_material,concentration_studied,endpoints,finding_summary,phototype_relevance,statistically_significant,status,notes
+EVL-0001,ING-001,STU-0002,efficacy,ingredient_vs_vehicle,,,,not_reported,not_reported,imported_unverified,Raw scope: Controlled human testing of niacinamide-containing moisturizer vs vehicle
+EVL-0002,ING-002,STU-0003,efficacy,isolated_ingredient,20%,,,not_reported,not_reported,imported_unverified,Raw scope: Clinical trial of 20% azelaic acid treatment in dark-skinned melasma patients
+EVL-0003,ING-003,STU-0004,efficacy,ingredient_vs_vehicle,5%,,,not_reported,not_reported,imported_unverified,Raw scope: Randomized clinical trial of topical 5% tranexamic acid in melasma
+EVL-0004,ING-004,STU-0005,efficacy,isolated_ingredient,5%,,,not_reported,not_reported,imported_unverified,Raw scope: Randomized split-face trial; ascorbic-acid cream compared against hydroquinone
+EVL-0005,ING-005,STU-0006,efficacy,isolated_ingredient,peel strength (not 0.5-2%),,,not_reported,not_reported,imported_unverified,Raw scope: Clinical peel protocol at treatment concentrations; NOT evidence of 0.5–2% daily cosmetic use
+EVL-0006,ING-006,STU-0007,efficacy,isolated_ingredient,peel strength (not leave-on),,,not_reported,not_reported,imported_unverified,Raw scope: Controlled study of professional peels; NOT low-dose leave-on products
+EVL-0007,ING-008,STU-0009,efficacy,multi_ingredient_formulation,5% with 2% kojic acid,,,not_reported,not_reported,imported_unverified,Raw scope: Clinical combination study; not an isolated alpha-arbutin effect
+EVL-0008,ING-009,STU-0010,efficacy,ingredient_vs_vehicle,,,,not_reported,not_reported,imported_unverified,Raw scope: Randomized double-blind vehicle-controlled retinol cream trial
+EVL-0009,ING-010,STU-0011,efficacy,ingredient_vs_vehicle,,,,not_reported,not_reported,imported_unverified,Raw scope: Placebo-controlled trial of thiamidol-containing cosmetic
+EVL-0010,ING-011,STU-0012,efficacy,multi_ingredient_formulation,,,,not_reported,not_reported,imported_unverified,Raw scope: Ceramide NP-containing finished moisturizer; not single-ingredient isolated
+EVL-0011,ING-021,STU-0014,efficacy,ingredient_vs_vehicle,3 ppm,,,not_reported,not_reported,imported_unverified,Raw scope: Randomized placebo-controlled split-face study; tested 3 ppm pal-KTTKS in moisturizer in Caucasian participants
+EVL-0012,ING-032,STU-0017,efficacy,ingredient_vs_vehicle,,,,not_reported,not_reported,imported_unverified,Raw scope: Controlled post-laser healing study; does not prove ordinary anti-pigmentation claims
+EVL-0013,ING-050,STU-0019,efficacy,multi_ingredient_formulation,,,,not_reported,not_reported,imported_unverified,Raw scope: Lamellar finished emulsion with multiple lipids; not lecithin-isolated
+EVL-0014,ING-081,STU-0021,efficacy,ingredient_vs_vehicle,,,,not_reported,not_reported,imported_unverified,Raw scope: Glycerol-containing cream compared to glycerol-free vehicle
+EVL-0015,ING-089,STU-0023,efficacy,multi_ingredient_formulation,4% urea + 4% sodium chloride,,,not_reported,not_reported,imported_unverified,Raw scope: Randomized trial of 4% urea plus 4% sodium chloride cream; co-active caveat
+EVL-0016,ING-104,STU-0025,efficacy,ingredient_vs_vehicle,,,,not_reported,not_reported,imported_unverified,Raw scope: Randomized vehicle-controlled human study of panthenol formulations
+EVL-0017,ING-121,STU-0027,efficacy,ingredient_class_only,,,,not_reported,not_reported,imported_unverified,Raw scope: Clinical evidence synthesis includes shea; not a direct isolated trial for each claim
+EVL-0018,ING-131,STU-0028,efficacy,isolated_ingredient,neat oil,,,not_reported,not_reported,imported_unverified,Raw scope: Human repeated-application skin barrier study of sunflower vs olive oil
+EVL-0019,ING-139,STU-0027,efficacy,ingredient_class_only,,,,not_reported,not_reported,imported_unverified,Raw scope: Clinical evidence synthesis covering coconut oil; not scalp-specific

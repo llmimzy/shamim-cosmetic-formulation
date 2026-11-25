@@ -1,0 +1,3 @@
+id,ingredient_id,jurisdiction,status,max_concentration,product_types,conditions,legal_reference,source_id,status_basis,last_verified
+REG-0001,ING-008,EU,permitted_with_restrictions,2% face cream; 0.5% body lotion,face cream; body lotion,Hydroquinone impurity to be monitored (raw note),Commission Regulation (EU) 2024/996,,imported_unverified,
+REG-0002,ING-009,EU,permitted_with_restrictions,0.05% retinol equivalent body lotion; 0.3% RE other products,body lotion; hand/face and other leave-on/rinse-off,Raw note mentions pregnancy-related precautions,Commission Regulation (EU) 2024/996,,imported_unverified,

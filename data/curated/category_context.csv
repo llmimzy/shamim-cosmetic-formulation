@@ -1,0 +1,13 @@
+category,study_id,raw_scope,note
+active_ingredients,STU-0008,Clinical evidence review; not isolated for every listed active,Category-level context only. Not evidence for any individual ingredient unless an evidence link says so.
+ceramides,STU-0013,Finished multi-ingredient cream trial; not isolated ceramide species,Category-level context only. Not evidence for any individual ingredient unless an evidence link says so.
+peptides,STU-0015,Peptide-class review; no universal inference to each INCI peptide,Category-level context only. Not evidence for any individual ingredient unless an evidence link says so.
+botanical_extracts,STU-0016,Botanical class evidence; extract-specific trials must be checked,Category-level context only. Not evidence for any individual ingredient unless an evidence link says so.
+emulsifiers,SRC-0018,Functional registry; not an efficacy study,Category-level context only. Not evidence for any individual ingredient unless an evidence link says so.
+thickeners_and_rheology_modifiers,SRC-0018,Functional registry; viscosity/stability must be experimentally tested,Category-level context only. Not evidence for any individual ingredient unless an evidence link says so.
+surfactants,SRC-0018,Functional registry; mildness/cleansing requires finished-product testing,Category-level context only. Not evidence for any individual ingredient unless an evidence link says so.
+humectants,STU-0022,Multi-ingredient moisturizer clinical trial; not humectant-isolated,Category-level context only. Not evidence for any individual ingredient unless an evidence link says so.
+emollients,STU-0024,Finished-product comparative trial; not single-emollient proof,Category-level context only. Not evidence for any individual ingredient unless an evidence link says so.
+moisturisers_and_barrier_support,STU-0019,Multi-component barrier formulation clinical trial,Category-level context only. Not evidence for any individual ingredient unless an evidence link says so.
+natural_butters,STU-0027,Review covers selected oils and shea butter; not all listed butters,Category-level context only. Not evidence for any individual ingredient unless an evidence link says so.
+natural_oils,STU-0027,Review covers only some oils; effects depend on species and formulation,Category-level context only. Not evidence for any individual ingredient unless an evidence link says so.
