@@ -3,11 +3,11 @@ RNG-0001,ING-001,general,2,5,unknown,imported_unverified,,"Raw: indicative scree
 RNG-0002,ING-002,general,5,20,unknown,imported_unverified,,"Raw: indicative screening range, not a regulatory limit or validated supplier recommendation."
 RNG-0003,ING-003,general,2,5,unknown,imported_unverified,,"Raw: indicative screening range, not a regulatory limit or validated supplier recommendation."
 RNG-0004,ING-004,general,5,20,unknown,imported_unverified,,"Raw: indicative screening range, not a regulatory limit or validated supplier recommendation."
-RNG-0005,ING-005,general,0.5,2,unknown,imported_unverified,,"Raw: indicative screening range, not a regulatory limit or validated supplier recommendation."
+RNG-0005,ING-005,general,0.5,2,unknown,superseded,,"Raw: indicative screening range, not a regulatory limit or validated supplier recommendation. Superseded 2026-11-25 by product-type ranges capped at EU limits (owner decision 6)."
 RNG-0006,ING-006,general,2,10,unknown,imported_unverified,,"Raw: indicative screening range, not a regulatory limit or validated supplier recommendation."
 RNG-0007,ING-007,general,2,10,unknown,imported_unverified,,"Raw: indicative screening range, not a regulatory limit or validated supplier recommendation."
-RNG-0008,ING-008,general,0.2,2,unknown,imported_unverified,,"Raw: indicative screening range, not a regulatory limit or validated supplier recommendation."
-RNG-0009,ING-009,general,0.05,0.3,unknown,imported_unverified,,"Raw: indicative screening range, not a regulatory limit or validated supplier recommendation."
+RNG-0008,ING-008,general,0.2,2,unknown,superseded,,"Raw: indicative screening range, not a regulatory limit or validated supplier recommendation. Superseded 2026-11-25 by product-type ranges capped at EU limits (owner decision 6)."
+RNG-0009,ING-009,general,0.05,0.3,unknown,superseded,,"Raw: indicative screening range, not a regulatory limit or validated supplier recommendation. Superseded 2026-11-25 by product-type ranges capped at EU limits (owner decision 6)."
 RNG-0010,ING-010,general,0.1,0.2,unknown,imported_unverified,,"Raw: indicative screening range, not a regulatory limit or validated supplier recommendation."
 RNG-0011,ING-011,general,0.01,0.5,unknown,imported_unverified,,"Raw: indicative screening range, not a regulatory limit or validated supplier recommendation."
 RNG-0012,ING-012,general,0.01,0.5,unknown,imported_unverified,,"Raw: indicative screening range, not a regulatory limit or validated supplier recommendation."
@@ -139,3 +139,10 @@ RNG-0137,ING-137,general,2,20,unknown,imported_unverified,,"Raw: indicative scre
 RNG-0138,ING-138,general,2,30,unknown,imported_unverified,,"Raw: indicative screening range, not a regulatory limit or validated supplier recommendation."
 RNG-0139,ING-139,general,2,30,unknown,imported_unverified,,"Raw: indicative screening range, not a regulatory limit or validated supplier recommendation."
 RNG-0140,ING-140,general,2,20,unknown,imported_unverified,,"Raw: indicative screening range, not a regulatory limit or validated supplier recommendation."
+RNG-0141,ING-008,face_cream,,2.0,eu_regulatory_maximum,source_verified,SRC-0029,Maximum is the EU legal limit; minimum is not a sourced value (left blank).
+RNG-0142,ING-008,body_lotion,,0.5,eu_regulatory_maximum,source_verified,SRC-0029,Maximum is the EU legal limit; minimum is not a sourced value (left blank).
+RNG-0143,ING-009,body_lotion,,0.05,eu_regulatory_maximum,source_verified,SRC-0029,Retinol equivalent. Maximum is the EU legal limit; minimum is not a sourced value (left blank).
+RNG-0144,ING-009,other_leave_on_and_rinse_off,,0.3,eu_regulatory_maximum,source_verified,SRC-0029,Retinol equivalent. Maximum is the EU legal limit; minimum is not a sourced value (left blank).
+RNG-0145,ING-005,other_products,,2.0,eu_regulatory_maximum,source_verified,SRC-0030,"Non-preservative use; excludes body lotion, eye shadow, mascara, eyeliner, lipstick, roll-on deodorant. Maximum is the EU legal limit; minimum is not a sourced value (left blank)."
+RNG-0146,ING-005,rinse_off_hair,,3.0,eu_regulatory_maximum,source_verified,SRC-0030,Non-preservative use. Maximum is the EU legal limit; minimum is not a sourced value (left blank).
+RNG-0147,ING-005,preservative_use,,0.5,eu_regulatory_maximum,source_verified,SRC-0030,"As acid; the only route for body lotion, eye shadow, mascara, eyeliner, lipstick, roll-on deodorant. Maximum is the EU legal limit; minimum is not a sourced value (left blank)."

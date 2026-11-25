@@ -116,12 +116,14 @@ def validate() -> tuple[list[str], list[str], dict]:
             errors.append(f"category_context: unknown category {c['category']}")
 
     # Concentrations vs recorded limits -----------------------------------------
+    active_ranges = [r for r in ranges if r["status"] != "superseded"]
     for r in ranges:
         if r["ingredient_id"] not in ing_ids:
             errors.append(f"{r['id']}: broken ingredient reference")
         try:
-            lo, hi = float(r["min_percent"]), float(r["max_percent"])
-            if lo > hi:
+            hi = float(r["max_percent"])
+            # A blank minimum means "no sourced minimum", never zero.
+            if r["min_percent"] and float(r["min_percent"]) > hi:
                 errors.append(f"{r['id']}: min_percent > max_percent")
         except ValueError:
             errors.append(f"{r['id']}: non-numeric range")
@@ -130,14 +132,27 @@ def validate() -> tuple[list[str], list[str], dict]:
             errors.append(f"{g['id']}: broken ingredient reference")
         if g["jurisdiction"] not in JURISDICTIONS:
             errors.append(f"{g['id']}: unknown jurisdiction")
-        limits = [float(x) for x in PCT_RE.findall(g["max_concentration"])]
-        if not limits:
+        if g["source_id"] and g["source_id"] not in study_ids:
+            errors.append(f"{g['id']}: broken source reference {g['source_id']}")
+        if g["status_basis"] == "single_source":
+            warnings.append(f"{g['id']}: {g['jurisdiction']} limit rests on a single source; confirm against the OJ text")
+    # One regulatory row per (ingredient, product type). A range above the limit for the SAME product type is an
+    # error; a range whose product type has no matching limit (while limits exist for that ingredient) is a warning.
+    for r in active_ranges:
+        limits = [g for g in reg if g["ingredient_id"] == r["ingredient_id"]]
+        if not limits or not r["max_percent"]:
             continue
-        for r in ranges:
-            if r["ingredient_id"] == g["ingredient_id"] and r["max_percent"] and float(r["max_percent"]) > min(limits):
-                warnings.append(f"Range {r['id']} ({r['product_type']}, max {r['max_percent']}%) exceeds the lowest "
-                                f"recorded {g['jurisdiction']} limit ({min(limits)}%) for some product type: "
-                                f"{g['product_types']}")
+        match = [g for g in limits if g["product_types"] in (r["product_type"], "all")]
+        for g in match:
+            lim = [float(x) for x in PCT_RE.findall(g["max_concentration"])]
+            if lim and float(r["max_percent"]) > min(lim):
+                errors.append(f"Range {r['id']} ({r['product_type']}, max {r['max_percent']}%) exceeds the "
+                              f"{g['jurisdiction']} limit {g['max_concentration']} ({g['id']})")
+        if not match:
+            lowest = min(float(x) for g in limits for x in PCT_RE.findall(g["max_concentration"]))
+            if float(r["max_percent"]) > lowest:
+                warnings.append(f"Range {r['id']} ({r['product_type']}, max {r['max_percent']}%) has no matching "
+                                f"product-type limit; lowest recorded limit is {lowest}%")
 
     stats = {
         "ingredients": len(ing),

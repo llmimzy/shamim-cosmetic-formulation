@@ -19,18 +19,23 @@ _Last updated 2026-11-25. Branch `phase-1-audit`, not pushed._
 
 ## Done
 - **Phase 2 pipeline.** Raw file → `import_raw.py` → change log → `build.py` → `data/curated/ingredients.csv`, `data/build/database.json` and `data/build/ingredients_cleaned.csv`. A test proves the curated table equals raw + change log.
-- **Missing CAS research (50 of 50).** Results are in `data/curated/research/cas_findings_2026-11-25.csv` and applied through 196 change-log entries:
-  - 31 verified with two sources;
-  - 6 grade-dependent (ceramide classes, polymers, olivate);
-  - 5 conflicting (recorded with each candidate);
-  - 7 not found;
-  - 1 single-source (Ceramide EOS).
-- **Validator and tests.** `scripts/validate.py` writes `docs/VALIDATION_REPORT.md` (0 errors, 133 open-uncertainty warnings). `tests/test_database.py` has 17 tests, all passing.
-- **Evidence atlas** added under `research/melanated-skin/evidence-atlas/`.
+- **Missing CAS (50 of 50).** My findings (`cas_findings_2026-11-25.csv`) were superseded by the owner-confirmed list (`cas_verified_2026-11-25.csv`, 292 change-log entries).
+- **References (24 of 24 dataset studies).** `reference_verification_2026-11-25.csv`, applied by `scripts/apply_references.py` (refuses PMID mismatches and single-source verifications; idempotent). All 24 are `identity_verified` at abstract level; Ceramide NP trial authors not confirmed. The 19 evidence links now carry concentration, endpoint, finding, significance and caveats.
+  - The remaining dataset sources are regulations/identity databases (SRC-*), not studies. Two (FDA M020, ECHA) are `removed` per owner decisions 1–2.
+- **Atlas references (13).** MS007 authors filled (Chang YF et al.). DOIs added for MS004, MS005, MS007, MS009. MS003 (*Cutis* 2002) and MS012 (*JCAD* 2022) have no DOI assigned; the cards say so. The atlas validator and tests no longer hard-code 13 studies.
+- **EU limits.** `eu_limits_2026-11-25.csv` → 19 rows in `regulatory.csv`, one per ingredient × product type:
+  - Annex V: phenoxyethanol, benzyl alcohol, benzoic acid/sodium benzoate, sorbic acid/potassium sorbate, dehydroacetic acid, chlorphenesin (single source; flagged), salicylic acid (preservative use).
+  - Annex III: salicylic acid (2019/1966), alpha-arbutin and retinol (2024/996).
+  - Ethylhexylglycerin and caprylyl glycol are not Annex V preservatives and have no row.
+- **Product-type ranges** for retinol, alpha-arbutin and salicylic acid replace the old general rows (kept as `superseded`). The maximum is the EU limit; the minimum is blank because no sourced minimum exists. The validator now errors if a range exceeds the limit for the same product type.
+- **Allanblackia.** No INCI name for *A. floribunda* butter was found; see `data/curated/research/allanblackia_species_2026-11-25.md`.
+- **Checks.** 0 validation errors, 100 warnings (open uncertainty); 14 database tests and 3 atlas tests pass.
+
+## Waiting on the owner
+- **Allanblackia:** rename ING-129 to *Allanblackia Stuhlmannii Seed Butter* (recommended)?
+- **D6:** push to GitHub.
 
 ## Next, in order
-1. Double-check the **90 CAS numbers already in the raw file**; they are still `imported_unverified`.
-2. Verify all **27 dataset references and 13 atlas references**: exact title, authors, year, journal, DOI, PMID, population. Fill MS007 authors and the six missing atlas DOIs.
-3. Annex V preservative limits; product-type ranges for retinol, alpha-arbutin and salicylic acid.
-4. Owner review: the INCI name "Allanblackia Floribunda Seed Butter" is not confirmed in CosIng (CosIng lists *A. stuhlmannii* and *A. parviflora*).
-5. Phase 4–6: compatibility rules, melanated-skin framework, African botanicals, explorer, README.
+1. Double-check the **90 CAS numbers already in the raw file** (still `imported_unverified`).
+2. Full-text extraction for the key studies (effect sizes, phototype subgroups), moving them from `identity_verified` to `content_extracted`.
+3. Phase 4–6: compatibility rules, melanated-skin framework, African botanicals, explorer, README.

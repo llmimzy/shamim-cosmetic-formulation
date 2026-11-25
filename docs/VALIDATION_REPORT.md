@@ -9,9 +9,9 @@ A valid CAS checksum or DOI pattern proves format only, not identity.
 
 - Ingredients: 140
 - CAS status: conflicting_identity 1, generic_identifier 2, grade_dependent 6, imported_unverified 90, unresolved 3, verified_botanical 16, verified_exact 11, verified_representative 11
-- Sources by verification status: identity_verified 24, removed 2, unverified 2
-- Evidence links: 19 · Regulatory entries: 2
-- Errors: **0** · Warnings: **102**
+- Sources by verification status: identity_verified 27, removed 2, unverified 1
+- Evidence links: 19 · Regulatory entries: 19
+- Errors: **0** · Warnings: **100**
 
 ## Errors
 
@@ -116,8 +116,6 @@ None.
 - CAS imported_unverified: ING-138 Carthamus Tinctorius (Safflower) Seed Oil
 - CAS imported_unverified: ING-139 Cocos Nucifera (Coconut) Oil
 - Shared CAS 93165-54-9 (species- or class-level identifier?): ING-039 Moringa Oleifera Leaf Extract; ING-136 Moringa Oleifera Seed Oil
-- Source unverified: SRC-0001 Regulation (EC) No 1223/2009 on cosmetic products, Annex V (list of preservatives allowed in cosmetic products), consolidated text
 - Source unverified: SRC-0018 European Commission CosIng ingredient database
-- Range RNG-0008 (general, max 2%) exceeds the lowest recorded EU limit (0.5%) for some product type: face cream; body lotion
-- Range RNG-0009 (general, max 0.3%) exceeds the lowest recorded EU limit (0.05%) for some product type: body lotion; hand/face and other leave-on/rinse-off
+- REG-0012: EU limit rests on a single source; confirm against the OJ text
 - Active-matter % missing for 140/140 ingredients (needs supplier CoA/TDS)
