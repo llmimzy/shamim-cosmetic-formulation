@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/llmimzy/shamim-cosmetic-formulation/data/schemas/database.schema.json",
+  "title": "Cosmetic Formulation Intelligence — canonical database (DRAFT v0.1, Phase 1)",
+  "description": "Draft for approval. One row per record in each table. A value that research has not yet established is null and carries a status; it is never guessed. Ingredient properties, studies, evidence links and regulatory entries are separate tables, joined by ID.",
+  "$defs": {
+    "status": {
+      "description": "Verification status of a single value or record.",
+      "enum": ["not_researched", "imported_unverified", "source_verified", "expert_reviewed", "not_applicable", "conflicting_sources"]
+    },
+    "sourced_value": {
+      "description": "A value plus where it came from and how far it has been checked.",
+      "type": "object",
+      "required": ["value", "status"],
+      "properties": {
+        "value": {},
+        "unit": {"type": ["string", "null"]},
+        "status": {"$ref": "#/$defs/status"},
+        "source_ids": {"type": "array", "items": {"type": "string", "pattern": "^(STU|SRC)-[0-9]{4}$"}},
+        "note": {"type": ["string", "null"]}
+      }
+    },
+    "percent_range": {
+      "type": "object",
+      "properties": {
+        "min": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "max": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "basis": {"enum": ["as_supplied", "active_matter", "unknown"]},
+        "product_type": {"type": ["string", "null"], "description": "e.g. leave-on face, rinse-off, body lotion. Ranges are product-type specific where regulation differs."},
+        "status": {"$ref": "#/$defs/status"},
+        "source_ids": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "category": {
+      "enum": [
+        "active_ingredients", "ceramides", "peptides", "botanical_extracts", "emulsifiers", "preservatives",
+        "thickeners_and_rheology_modifiers", "surfactants", "humectants", "emollients",
+        "moisturisers_and_barrier_support", "sunscreen_filters", "natural_butters", "natural_oils"
+      ]
+    },
+    "ingredient": {
+      "type": "object",
+      "required": ["id", "inci_name", "primary_category", "raw_row_ref", "record_status"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^ING-[0-9]{3}$", "description": "Stable, never reused. Assigned in raw-file order."},
+        "raw_row_ref": {"type": "string", "description": "Category + Selection_Order in the raw file, e.g. 'Active ingredients#1'."},
+        "record_status": {"enum": ["imported", "in_review", "evidence_reviewed", "complete"]},
+
+        "inci_name": {"type": "string", "description": "As used in the EU CosIng database where listed."},
+        "inci_name_variants": {"type": "array", "items": {"type": "string"}, "description": "e.g. US/PCPC form 'Butyrospermum Parkii (Shea) Butter'."},
+        "common_names": {"type": "array", "items": {"type": "string"}},
+        "cas_number": {"$ref": "#/$defs/sourced_value"},
+        "ec_number": {"$ref": "#/$defs/sourced_value"},
+        "chemical_family": {"$ref": "#/$defs/sourced_value"},
+        "primary_category": {"$ref": "#/$defs/category"},
+        "secondary_functions": {"type": "array", "items": {"type": "string"}},
+        "origin": {"enum": ["natural", "naturally_derived", "synthetic", "biotechnological", "mineral", "unknown"]},
+        "botanical_id": {"type": ["string", "null"], "pattern": "^BOT-[0-9]{3}$"},
+        "plant_part": {"type": ["string", "null"]},
+        "standardisation_requirements": {"$ref": "#/$defs/sourced_value"},
+
+        "typical_use_percent": {"$ref": "#/$defs/percent_range"},
+        "clinically_tested_percent": {"type": "array", "items": {"$ref": "#/$defs/percent_range"}},
+        "active_matter_percent": {"$ref": "#/$defs/sourced_value"},
+        "supplier_grade_percent": {"$ref": "#/$defs/sourced_value"},
+        "solubility": {"enum": ["water", "oil", "both", "dispersible", "grade_dependent", "unknown"]},
+        "hlb": {"$ref": "#/$defs/sourced_value"},
+        "addition_phase": {"enum": ["water", "oil", "heated_oil", "lipid_premix", "cool_down", "pre_dispersion", "post_neutralisation", "grade_dependent", "unknown"]},
+        "processing_temperature_c": {"$ref": "#/$defs/sourced_value"},
+        "formulation_ph": {"$ref": "#/$defs/sourced_value"},
+        "stability_considerations": {"$ref": "#/$defs/sourced_value"},
+        "oxidation_sensitivity": {"enum": ["low", "moderate", "high", "unknown"]},
+        "photostability": {"enum": ["stable", "unstable", "conditional", "not_applicable", "unknown"]},
+        "compatibility_rule_ids": {"type": "array", "items": {"type": "string", "pattern": "^CMP-[0-9]{3}$"}},
+        "manufacturing_considerations": {"$ref": "#/$defs/sourced_value"},
+
+        "primary_function": {"type": "string"},
+        "mechanism_of_action": {"$ref": "#/$defs/sourced_value"},
+        "expected_benefits": {"type": "object", "properties": {"skin": {"$ref": "#/$defs/sourced_value"}, "hair": {"$ref": "#/$defs/sourced_value"}, "body": {"$ref": "#/$defs/sourced_value"}}},
+        "melanated_skin": {
+          "type": "object",
+          "description": "Assessed per ingredient, never copied across a category.",
+          "properties": {
+            "evidence_tier": {"enum": ["direct_fitzpatrick_iv_vi", "mixed_population", "lighter_phototypes_only", "laboratory_or_mechanistic", "preliminary_or_unsubstantiated", "not_yet_assessed"]},
+            "concern_relevance": {"type": "object", "description": "Keys: pih, melasma, acne_pigmentation, uneven_tone, inflammation, barrier, tewl, irritation_pigmentation, photoprotection, visible_light, photoageing, skin_longevity. Values: direct | indirect | none | unknown."},
+            "irritation_or_pih_risk": {"$ref": "#/$defs/sourced_value"},
+            "notes": {"type": ["string", "null"]}
+          }
+        },
+        "regulatory_entry_ids": {"type": "array", "items": {"type": "string", "pattern": "^REG-[0-9]{4}$"}}
+      }
+    },
+    "study": {
+      "type": "object",
+      "description": "One published or official source. A regulatory listing or supplier document is a source but is never typed as a clinical study.",
+      "required": ["id", "source_type", "title", "verification_status"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^(STU|SRC)-[0-9]{4}$"},
+        "source_type": {"enum": ["rct", "controlled_clinical", "systematic_review_or_meta_analysis", "human_instrumental", "observational_human", "ex_vivo", "in_vitro", "physicochemical", "supplier_technical", "regulatory_listing", "review_narrative", "traditional_use_record"]},
+        "title": {"type": "string", "description": "Exact published title."},
+        "authors": {"type": "array", "items": {"type": "string"}},
+        "year": {"type": ["integer", "null"]},
+        "journal": {"type": ["string", "null"]},
+        "doi": {"type": ["string", "null"], "pattern": "^10\\.[0-9]{4,9}/\\S+$"},
+        "pmid": {"type": ["string", "null"], "pattern": "^[0-9]{1,9}$"},
+        "url": {"type": ["string", "null"], "format": "uri"},
+        "sample_size": {"type": ["integer", "null"]},
+        "population": {"type": ["string", "null"]},
+        "phototypes": {"enum": ["fitzpatrick_iv_vi", "mixed_including_iv_vi", "fitzpatrick_i_iii", "not_reported", "not_applicable"]},
+        "duration": {"type": ["string", "null"]},
+        "comparator": {"type": ["string", "null"]},
+        "funding_or_conflicts": {"type": ["string", "null"]},
+        "limitations": {"type": ["string", "null"]},
+        "verification_status": {"enum": ["unverified", "identity_verified", "content_extracted", "rejected"], "description": "identity_verified: the paper exists and the DOI/PMID match it. content_extracted: endpoints and results were read from the paper."},
+        "verified_on": {"type": ["string", "null"], "format": "date"}
+      }
+    },
+    "evidence_link": {
+      "type": "object",
+      "description": "Joins one study to one ingredient for one purpose. This is where 'what exactly was tested' lives.",
+      "required": ["id", "ingredient_id", "study_id", "purpose", "test_material"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^EVL-[0-9]{4}$"},
+        "ingredient_id": {"type": "string"},
+        "study_id": {"type": "string"},
+        "purpose": {"enum": ["efficacy", "safety", "stability", "regulatory", "identity"]},
+        "test_material": {"enum": ["isolated_ingredient", "ingredient_vs_vehicle", "multi_ingredient_formulation", "ingredient_class_only", "not_tested_in_study"], "description": "multi_ingredient_formulation and ingredient_class_only can never be counted as isolated-ingredient efficacy."},
+        "concentration_studied": {"type": ["string", "null"]},
+        "endpoints": {"type": "array", "items": {"type": "string"}},
+        "results_quantitative": {"type": ["string", "null"]},
+        "statistically_significant": {"enum": ["yes", "no", "mixed", "not_reported", null]},
+        "clinically_meaningful_assessment": {"type": ["string", "null"]},
+        "concern_tags": {"type": "array", "items": {"type": "string"}},
+        "notes": {"type": ["string", "null"]}
+      }
+    },
+    "regulatory_entry": {
+      "type": "object",
+      "required": ["id", "ingredient_id", "jurisdiction", "status"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^REG-[0-9]{4}$"},
+        "ingredient_id": {"type": "string"},
+        "jurisdiction": {"enum": ["KE", "EU", "UK", "US", "CN"]},
+        "status": {"enum": ["permitted", "permitted_with_restrictions", "listed_as_preservative", "listed_as_uv_filter", "not_permitted_as_function", "prohibited", "drug_or_medicinal_route", "not_listed", "not_verified"]},
+        "max_concentration": {"type": ["string", "null"], "description": "Verbatim limit, including basis (e.g. 'as acid') and product type."},
+        "product_type_limits": {"type": ["string", "null"]},
+        "conditions_and_warnings": {"type": ["string", "null"]},
+        "legal_reference": {"type": ["string", "null"]},
+        "source_id": {"type": ["string", "null"]},
+        "last_verified": {"type": ["string", "null"], "format": "date"}
+      }
+    },
+    "change_log_entry": {
+      "type": "object",
+      "required": ["id", "date", "record_id", "field", "old_value", "new_value", "reason"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^CHG-[0-9]{5}$"},
+        "date": {"type": "string", "format": "date"},
+        "record_id": {"type": "string"},
+        "field": {"type": "string"},
+        "old_value": {},
+        "new_value": {},
+        "reason": {"type": "string"},
+        "source_id": {"type": ["string", "null"]}
+      }
+    }
+  }
+}
